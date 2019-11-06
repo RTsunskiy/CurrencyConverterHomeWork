@@ -1,15 +1,11 @@
 package com.example.currencyconverterhomework.presentation;
 
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 
-import com.example.currencyconverterhomework.data.model.Currency;
 import com.example.currencyconverterhomework.data.repository.CurrencyRepository;
 import com.example.currencyconverterhomework.view.ICurrencyView;
 
 import java.lang.ref.WeakReference;
-import java.util.List;
 
 public class CurrencyPresenter {
 
@@ -20,7 +16,6 @@ public class CurrencyPresenter {
     public CurrencyPresenter(@NonNull ICurrencyView mainActivity) {
         mMainActivityWeakReference = new WeakReference<>(mainActivity);
     }
-
 
 
     public void loadCurrency() {

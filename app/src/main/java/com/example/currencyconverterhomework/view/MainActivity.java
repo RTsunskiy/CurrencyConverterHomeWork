@@ -1,14 +1,14 @@
 package com.example.currencyconverterhomework.view;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.currencyconverterhomework.R;
 import com.example.currencyconverterhomework.data.model.Currency;
@@ -39,28 +39,30 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
         setContentView(R.layout.activity_main);
         initViews();
 
-}
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
-       adapter = new CurrencyAdapter(currency);
+
+        mMainPresenter.loadCurrency();
     }
 
     public void showData(@NonNull List<Currency> modelList) {
-       setCurrency(modelList);
+        setCurrency(modelList);
+
+        adapter = new CurrencyAdapter(currency);
+        mSpinnerFrom.setAdapter(adapter);
     }
-
-
 
     private void initViews() {
         mSpinnerFrom = findViewById(R.id.spinnerFrom);
         mSpinnerFrom.setAdapter(adapter);
         mSpinnerTo = findViewById(R.id.spinnerTo);
         findViewById(R.id.convert).setOnClickListener(v -> {
-                    mSpinnerFrom.getSelectedItemPosition();
-                    mSpinnerTo.getSelectedItemPosition();
-                    mFromAmount.getText().toString();
+            mSpinnerFrom.getSelectedItemPosition();
+            mSpinnerTo.getSelectedItemPosition();
+            mFromAmount.getText().toString();
         });
 
         mFromAmount = findViewById(R.id.fromAmount);
