@@ -15,13 +15,11 @@ public class CurrencyPresenter {
 
     public CurrencyPresenter(@NonNull ICurrencyView mainActivity) {
         mMainActivityWeakReference = new WeakReference<>(mainActivity);
+        mCurrencyRepository = new CurrencyRepository();
     }
 
 
     public void loadCurrency() {
-
-        mCurrencyRepository = new CurrencyRepository();
-
         CurrencyRepository.OnLoadingFinishListener onLoadingFinishListener = currencyModels -> {
             if (mMainActivityWeakReference.get() != null) {
                 mMainActivityWeakReference.get().showData(currencyModels);

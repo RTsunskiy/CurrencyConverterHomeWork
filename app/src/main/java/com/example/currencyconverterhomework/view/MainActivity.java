@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
 
     private CurrencyPresenter mMainPresenter = new CurrencyPresenter(this);
 
-    public void setCurrency(List<com.example.currencyconverterhomework.data.model.Currency> currency) {
-        this.currency = currency;
-    }
 
     private List<com.example.currencyconverterhomework.data.model.Currency> currency;
     private Spinner mSpinnerFrom;
@@ -49,10 +46,10 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
     }
 
     public void showData(@NonNull List<Currency> modelList) {
-        setCurrency(modelList);
-
+        currency = modelList;
         adapter = new CurrencyAdapter(currency);
         mSpinnerFrom.setAdapter(adapter);
+        mSpinnerTo.setAdapter(adapter);
     }
 
     private void initViews() {

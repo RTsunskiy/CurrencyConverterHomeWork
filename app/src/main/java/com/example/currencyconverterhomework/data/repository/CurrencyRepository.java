@@ -60,7 +60,6 @@ public class CurrencyRepository {
             InputStream inputStream = null;
             inputStream = connection.getInputStream();
             currencies = serializer.read(CurrenciesData.class, inputStream);
-            CurrenciesData t = currencies;
         } finally {
             connection.disconnect();
             return new ArrayList<>(currencies.getCurrencies());
