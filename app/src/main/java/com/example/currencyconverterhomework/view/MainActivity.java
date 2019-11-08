@@ -18,6 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ICurrencyView {
 
+    private static final int SECOND_ITEM = 1;
     private CurrencyPresenter mMainPresenter = new CurrencyPresenter(this);
 
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
         adapter = new CurrencyAdapter(currency);
         mSpinnerFrom.setAdapter(adapter);
         mSpinnerTo.setAdapter(adapter);
+        mSpinnerTo.setSelection(SECOND_ITEM);
     }
 
     private void initViews() {
@@ -57,9 +59,9 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
         mSpinnerFrom.setAdapter(adapter);
         mSpinnerTo = findViewById(R.id.spinnerTo);
         findViewById(R.id.convert).setOnClickListener(v -> {
-            mSpinnerFrom.getSelectedItemPosition();
-            mSpinnerTo.getSelectedItemPosition();
-            mFromAmount.getText().toString();
+            mConvertedText.setText(mMainPresenter.loadConvertedValue(mSpinnerFrom.getSelectedItemPosition(),
+                    mSpinnerTo.getSelectedItemPosition(),
+                    Float.valueOf(mFromAmount.getText().toString())));
         });
 
         mFromAmount = findViewById(R.id.fromAmount);
@@ -74,7 +76,8 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+           mConversionRate.setText(mMainPresenter.loadConversion(mSpinnerFrom.getSelectedItemPosition(),
+                   mSpinnerTo.getSelectedItemPosition()));
         }
 
         @Override

@@ -15,6 +15,7 @@ import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.strategy.Strategy;
 
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -77,6 +78,7 @@ public class CurrencyRepository {
                     currency.getValue()
             ));
         }
+        result.add(0, new Currency("rub_id", "RUB", 1, "Российский рубль", BigDecimal.ONE));
         return result;
     }
 
