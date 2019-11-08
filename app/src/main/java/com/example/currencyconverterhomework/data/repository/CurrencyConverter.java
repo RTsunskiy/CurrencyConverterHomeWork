@@ -17,7 +17,9 @@ public class CurrencyConverter {
         Currency fromCurrency = mListOfCurrency.get(mSpinnerFromPosition);
         Currency toCurrency = mListOfCurrency.get(mSpinnerToPosition);
 
-        return "Вы получите: " + toCurrency.getValue().divide(fromCurrency.getValue(), 5).multiply(BigDecimal.valueOf(mAmount)) + " "
+        return "Вы получите: " + toCurrency.getValue().divide(BigDecimal.valueOf(toCurrency.getNominal())).divide(fromCurrency.getValue()
+                .divide(BigDecimal.valueOf(fromCurrency.getNominal())), 5)
+                .multiply(BigDecimal.valueOf(mAmount)) + " "
                 + toCurrency.getCharCode();
     }
 }
