@@ -18,7 +18,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ICurrencyView {
 
-    private static final int SECOND_ITEM = 1;
     private CurrencyPresenter mMainPresenter = new CurrencyPresenter(this);
 
 
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
     private EditText mFromAmount;
     private TextView mConvertedText;
     private TextView mConversionRate;
-    private View mLoadingView;
     private CurrencyAdapter adapter;
 
     @Override
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
         adapter = new CurrencyAdapter(currency);
         mSpinnerFrom.setAdapter(adapter);
         mSpinnerTo.setAdapter(adapter);
-        mSpinnerTo.setSelection(SECOND_ITEM);
     }
 
     private void initViews() {
@@ -66,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
 
         mFromAmount = findViewById(R.id.fromAmount);
         mConvertedText = findViewById(R.id.convertedText);
-        mLoadingView = findViewById(R.id.loading_view);
         mConversionRate = findViewById(R.id.conversionRate);
         mSpinnerFrom.setOnItemSelectedListener(new OnCurrencySelectedListener());
         mSpinnerTo.setOnItemSelectedListener(new OnCurrencySelectedListener());
