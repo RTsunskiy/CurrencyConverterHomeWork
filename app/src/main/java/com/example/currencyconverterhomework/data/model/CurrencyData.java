@@ -1,7 +1,7 @@
 package com.example.currencyconverterhomework.data.model;
 
 
-import com.example.currencyconverterhomework.data.repository.BigDecimalConverter;
+import com.example.currencyconverterhomework.common.BigDecimalConverter;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;

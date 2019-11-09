@@ -1,7 +1,9 @@
-package com.example.currencyconverterhomework.data.repository;
+package com.example.currencyconverterhomework.common;
 
 import com.example.currencyconverterhomework.data.model.Currency;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class ConversionRate {
@@ -16,8 +18,12 @@ public class ConversionRate {
         Currency fromCurrency = mListOfCurrency.get(mSpinnerFromPosition);
         Currency toCurrency = mListOfCurrency.get(mSpinnerToPosition);
 
-        return "Курс конверсии: " + fromCurrency.getValue().divide(toCurrency.getValue(), 5)
-                .toString() + " "
+        BigDecimal rate = fromCurrency.getValue()
+                .multiply(new BigDecimal(toCurrency.getNominal()))
+                .divide(toCurrency.getValue(), 2, RoundingMode.HALF_UP)
+                .divide(new BigDecimal(fromCurrency.getNominal()), 2, RoundingMode.HALF_UP);
+
+        return "Курс конверсии: " + rate + " "
                 + fromCurrency.getCharCode() +
                 "/" + toCurrency.getCharCode();
     }

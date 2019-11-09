@@ -1,4 +1,4 @@
-package com.example.currencyconverterhomework.data.repository;
+package com.example.currencyconverterhomework.common;
 
 import com.example.currencyconverterhomework.data.model.Currency;
 

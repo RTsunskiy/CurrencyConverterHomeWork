@@ -2,14 +2,12 @@ package com.example.currencyconverterhomework.presentation;
 
 import androidx.annotation.NonNull;
 
-import com.example.currencyconverterhomework.data.model.Currency;
-import com.example.currencyconverterhomework.data.repository.ConversionRate;
-import com.example.currencyconverterhomework.data.repository.CurrencyConverter;
+import com.example.currencyconverterhomework.common.ConversionRate;
+import com.example.currencyconverterhomework.common.CurrencyConverter;
 import com.example.currencyconverterhomework.data.repository.CurrencyRepository;
 import com.example.currencyconverterhomework.view.ICurrencyView;
 
 import java.lang.ref.WeakReference;
-import java.util.List;
 
 public class CurrencyPresenter {
 
