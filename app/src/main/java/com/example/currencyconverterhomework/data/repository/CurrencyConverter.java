@@ -3,6 +3,8 @@ package com.example.currencyconverterhomework.data.repository;
 import com.example.currencyconverterhomework.data.model.Currency;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class CurrencyConverter {
@@ -17,9 +19,13 @@ public class CurrencyConverter {
         Currency fromCurrency = mListOfCurrency.get(mSpinnerFromPosition);
         Currency toCurrency = mListOfCurrency.get(mSpinnerToPosition);
 
-        return "Вы получите: " + toCurrency.getValue().divide(BigDecimal.valueOf(toCurrency.getNominal())).divide(fromCurrency.getValue()
-                .divide(BigDecimal.valueOf(fromCurrency.getNominal())), 5)
-                .multiply(BigDecimal.valueOf(mAmount)) + " "
+        BigDecimal result = BigDecimal.valueOf(mAmount)
+                .multiply(fromCurrency.getValue())
+                .multiply(new BigDecimal(toCurrency.getNominal()))
+                .divide(toCurrency.getValue(), 2, RoundingMode.HALF_UP)
+                .divide(new BigDecimal(fromCurrency.getNominal()), 2, RoundingMode.HALF_UP);
+
+        return "Вы получите: " + result + " "
                 + toCurrency.getCharCode();
     }
 }

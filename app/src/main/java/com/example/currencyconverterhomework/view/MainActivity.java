@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements ICurrencyView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-
     }
 
     @Override

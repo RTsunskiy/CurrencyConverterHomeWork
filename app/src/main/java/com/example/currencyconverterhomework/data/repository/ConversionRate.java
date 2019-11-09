@@ -16,7 +16,9 @@ public class ConversionRate {
         Currency fromCurrency = mListOfCurrency.get(mSpinnerFromPosition);
         Currency toCurrency = mListOfCurrency.get(mSpinnerToPosition);
 
-        return "Курс конверсии: " + fromCurrency.getValue().divide(toCurrency.getValue(), 5).toString() + " "
-                + fromCurrency.getCharCode() + "/" + toCurrency.getCharCode();
+        return "Курс конверсии: " + fromCurrency.getValue().divide(toCurrency.getValue(), 5)
+                .toString() + " "
+                + fromCurrency.getCharCode() +
+                "/" + toCurrency.getCharCode();
     }
 }

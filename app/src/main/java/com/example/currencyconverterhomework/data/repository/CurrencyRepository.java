@@ -55,7 +55,7 @@ public class CurrencyRepository {
 
     private static List<CurrencyData> loadFromWeb() {
         try {
-            URL url = new URL("http://www.cbr.ru/scripts/XML_daily.asp/");
+            URL url = new URL("http://www.cbr.ru/scripts/XML_daily.asp");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             InputStream inputStream = null;
@@ -78,7 +78,11 @@ public class CurrencyRepository {
                     currency.getValue()
             ));
         }
-        result.add(0, new Currency("rub_id", "RUB", 1, "Российский рубль", BigDecimal.ONE));
+        result.add(0, new Currency("rub_id",
+                "RUB",
+                1,
+                "Российский рубль",
+                BigDecimal.ONE));
         return result;
     }
 
