@@ -1,4 +1,4 @@
-package com.example.currencyconverterhomework.common;
+package com.example.currencyconverterhomework.data.repository;
 
 import org.simpleframework.xml.convert.Converter;
 import org.simpleframework.xml.stream.InputNode;
